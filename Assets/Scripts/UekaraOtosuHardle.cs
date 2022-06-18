@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UekaraOtosuHardle : MonoBehaviour
 {
-    [SerializeField] float speed = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +13,10 @@ public class UekaraOtosuHardle : MonoBehaviour
     void Update()
     {
         // 落下速度をここで定義
+        HENNSUU hennsuu;
+        GameObject obj = GameObject.Find("HENNSUU"); //Playerっていうオブジェクトを探す
+        hennsuu = obj.GetComponent<HENNSUU>(); //付いているスクリプトを取得
+        float speed = hennsuu.speed*0.5f;
         //下方向にスクロール
         transform.position -= new Vector3(0, Time.deltaTime * speed);
 

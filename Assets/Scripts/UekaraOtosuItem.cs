@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UekaraOtosuItem : MonoBehaviour
 {
-    [SerializeField] float speed = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +14,10 @@ public class UekaraOtosuItem : MonoBehaviour
     {
         // 落下速度をここで定義
         //下方向にスクロール
+        HENNSUU hennsuu;
+        GameObject obj = GameObject.Find("HENNSUU"); //Playerっていうオブジェクトを探す
+        hennsuu = obj.GetComponent<HENNSUU>(); //付いているスクリプトを取得
+        float speed = hennsuu.speed*0.5f;
         transform.position -= new Vector3(0, Time.deltaTime * speed);
 
         //Yが-26まで来れば、オブジェクトを消そう
