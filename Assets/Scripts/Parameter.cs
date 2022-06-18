@@ -16,7 +16,7 @@ public class Parameter : MonoBehaviour
         {
             param = this;
         }
-        strength = 1f;
+        strength = 0.1f;
         weight = 1f;
         intelligence = 1f;
         sight = 1f;

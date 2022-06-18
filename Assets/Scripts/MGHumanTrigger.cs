@@ -6,15 +6,15 @@ using DG.Tweening;
 
 public class MGHumanTrigger : MonoBehaviour
 {
-    private Transform human;
-    private Transform shadow;
-    private Transform cam;
-    [SerializeField]  private float shadow_tan;
-    private Vector3 human_size;
-    private Sequence sequence;
-    private System.Random rand;
-    private float time;
-    private float dashtime;
+    [SerializeField] private Transform human;
+    [SerializeField] private Transform shadow;
+    [SerializeField] private Transform cam;
+    [SerializeField] private float shadow_tan;
+    [SerializeField] private Vector3 human_size;
+    [SerializeField] private Sequence sequence;
+    [SerializeField] private System.Random rand;
+    [SerializeField] private float time;
+    [SerializeField] private float dashtime;
     private float sidetime;
     private float baseheight;
     private int [] action;
@@ -35,8 +35,9 @@ public class MGHumanTrigger : MonoBehaviour
     {
         human = GameObject.FindGameObjectWithTag("human").transform;
         human_size = human.localScale;
-        GameObject.FindGameObjectWithTag("human").GetComponent<BoxCollider>().size = human_size;
+        // GameObject.FindGameObjectWithTag("human").GetComponent<BoxCollider>().size = human_size;
         shadow = GameObject.FindGameObjectWithTag("shadow").transform;
+
         cam = Camera.main.gameObject.transform;
         shadow_tan = 0.5f;
         time = 0f;
@@ -287,7 +288,7 @@ public class MGHumanTrigger : MonoBehaviour
         }
         else if (i == 1)
         {
-            addweight(0.01f);
+            addweight(0.02f);
             addstrength(0.01f);
         }
         else if (i == 2)
