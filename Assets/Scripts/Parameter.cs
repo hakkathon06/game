@@ -16,7 +16,7 @@ public class Parameter : MonoBehaviour
 
     public void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -27,7 +27,7 @@ public class Parameter : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public static void addweight(float x)
+    public void addweight(float x)
     {
         if (instance.weight + x > 0)
         {
@@ -35,7 +35,7 @@ public class Parameter : MonoBehaviour
         }
     }
 
-    public static void addstrength(float x)
+    public void addstrength(float x)
     {
         if (instance.strength + x > 0)
         {
@@ -43,7 +43,7 @@ public class Parameter : MonoBehaviour
         }
     }
 
-    public static void addintelligence(float x)
+    public void addintelligence(float x)
     {
         if (instance.intelligence + x > 0)
         {
@@ -51,7 +51,7 @@ public class Parameter : MonoBehaviour
         }
     }
 
-    public static void addsight(float x)
+    public void addsight(float x)
     {
         if (instance.sight + x > 0)
         {

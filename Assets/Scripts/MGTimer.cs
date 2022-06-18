@@ -40,8 +40,8 @@ public class MGTimer : MonoBehaviour
         }
         else if (startflag == 2)
         {
-            seconds = 40 - seconds;
-            if (totalTime > 40f)
+            seconds = 20 - seconds;
+            if (totalTime > 20f)
             {
                 startflag = 3;
                 totalTime = 0;

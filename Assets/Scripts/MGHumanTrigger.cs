@@ -17,7 +17,7 @@ public class MGHumanTrigger : MonoBehaviour
     [SerializeField] private float dashtime;
     private float sidetime;
     private float baseheight;
-    private int [] action;
+    private int[] action;
     private string[] item;
     public struct S_default
     {
@@ -50,21 +50,21 @@ public class MGHumanTrigger : MonoBehaviour
         s_default.sidetime = 0.5f;
         s_default.lanewidth = 5f;
         baseheight = 0f;
-        action = new int[4] {0, 1, 2, 3};
-        item = new string[5]{"hurdle", "item1", "item2", "item3", "item4"};
+        action = new int[4] { 0, 1, 2, 3 };
+        item = new string[5] { "hurdle", "item1", "item2", "item3", "item4" };
         rand = new System.Random((int)DateTime.Now.Millisecond);
     }
 
-    void    action_shuffle()
+    void action_shuffle()
     {
         int i, j, tmp;
-        int[] flag = new int[4] {1, 1, 1, 1}; 
+        int[] flag = new int[4] { 1, 1, 1, 1 };
 
         for (i = 4; i > 0; i--)
         {
             j = 0;
             tmp = rand.Next(0, i) + 1;
-            while(tmp > 0)
+            while (tmp > 0)
             {
                 if (flag[j++] == 1)
                 {
@@ -78,7 +78,7 @@ public class MGHumanTrigger : MonoBehaviour
 
     void Jump(int flag)
     {
-        if (rand.Next(1,1001) <= (int)(Parameter.Instance().intelligence * 1000))
+        if (rand.Next(1, 1001) <= (int)(Parameter.Instance().intelligence * 1000))
         {
             flag = 0;
         }
@@ -86,7 +86,7 @@ public class MGHumanTrigger : MonoBehaviour
         {
             Debug.Log("random");
             Action_Select(rand.Next(0, 5), 0);
-            return ;
+            return;
         }
         time = 1f + Parameter.Instance().strength;
         if (dashtime > 0)
@@ -105,16 +105,16 @@ public class MGHumanTrigger : MonoBehaviour
             time = sidetime;
         }
         Debug.Log("jump");
-        sequence.Join(human.DOMoveZ(-3f, time / 2).SetLoops(2,LoopType.Yoyo));
-        Parameter.addweight(-0.02f);
-        Parameter.addstrength(0.01f);
+        sequence.Join(human.DOMoveZ(-3f, time / 2).SetLoops(2, LoopType.Yoyo));
+        Parameter.Instance().addweight(-0.02f);
+        Parameter.Instance().addstrength(0.01f);
     }
 
     void Dash(int flag)
     {
         if (dashtime <= 0)
         {
-            if (rand.Next(1,1000) < (int)(Parameter.Instance().intelligence * 1000))
+            if (rand.Next(1, 1000) < (int)(Parameter.Instance().intelligence * 1000))
             {
                 flag = 0;
             }
@@ -122,13 +122,13 @@ public class MGHumanTrigger : MonoBehaviour
             {
                 Debug.Log("random");
                 Action_Select(rand.Next(0, 5), 0);
-                return ;
+                return;
             }
             Debug.Log("dash");
-            sequence.Join(human.DOMoveY(human.position.y + s_default.dashlen, s_default.dashtime).SetLoops(2,LoopType.Yoyo));
+            sequence.Join(human.DOMoveY(human.position.y + s_default.dashlen, s_default.dashtime).SetLoops(2, LoopType.Yoyo));
             dashtime = s_default.dashtime * 2;
-            Parameter.addweight(-0.02f);
-            Parameter.addstrength(0.01f);
+            Parameter.Instance().addweight(-0.02f);
+            Parameter.Instance().addstrength(0.01f);
         }
     }
 
@@ -136,7 +136,7 @@ public class MGHumanTrigger : MonoBehaviour
     {
         if (human.position.x < s_default.rightside - s_default.lanewidth && sidetime <= 0)
         {
-            if (rand.Next(1,1000) < (int)(Parameter.Instance().intelligence * 1000))
+            if (rand.Next(1, 1000) < (int)(Parameter.Instance().intelligence * 1000))
             {
                 flag = 0;
             }
@@ -144,7 +144,7 @@ public class MGHumanTrigger : MonoBehaviour
             {
                 Debug.Log("random");
                 Action_Select(rand.Next(0, 5), 0);
-                return ;
+                return;
             }
             Debug.Log("right");
             sequence.Join(human.DOMoveX(human.position.x + s_default.lanewidth, s_default.sidetime).SetEase(Ease.Linear));
@@ -156,7 +156,7 @@ public class MGHumanTrigger : MonoBehaviour
     {
         if (human.position.x > s_default.leftside + s_default.lanewidth && sidetime <= 0)
         {
-            if (rand.Next(1,1000) < (int)(Parameter.Instance().intelligence * 1000))
+            if (rand.Next(1, 1000) < (int)(Parameter.Instance().intelligence * 1000))
             {
                 flag = 0;
             }
@@ -164,10 +164,10 @@ public class MGHumanTrigger : MonoBehaviour
             {
                 Debug.Log("random");
                 Action_Select(rand.Next(0, 5), 0);
-                return ;
+                return;
             }
             Debug.Log("left");
-            sequence.Join(human.DOMoveX(human.position.x - s_default.lanewidth, s_default.sidetime).SetEase(Ease.Linear)); 
+            sequence.Join(human.DOMoveX(human.position.x - s_default.lanewidth, s_default.sidetime).SetEase(Ease.Linear));
             sidetime = s_default.sidetime;
         }
     }
@@ -220,7 +220,7 @@ public class MGHumanTrigger : MonoBehaviour
         pos.x = human.position.x;
         pos.y = human.position.y + (human.position.z - baseheight) * shadow_tan - human.localScale.y;
         pos.z = baseheight;
-        shadow.position = pos; 
+        shadow.position = pos;
     }
 
     void Fix_size()
@@ -287,27 +287,27 @@ public class MGHumanTrigger : MonoBehaviour
                     time = 0.5f;
                 }
             }
-            Parameter.addweight(0.01f);
+            Parameter.Instance().addweight(0.01f);
         }
         else if (i == 1)
         {
-            Parameter.addweight(0.02f);
-            Parameter.addstrength(0.01f);
+            Parameter.Instance().addweight(0.02f);
+            Parameter.Instance().addstrength(0.01f);
         }
         else if (i == 2)
         {
-            Parameter.addweight(0.01f);
-            Parameter.addintelligence(0.01f);
+            Parameter.Instance().addweight(0.01f);
+            Parameter.Instance().addintelligence(0.01f);
         }
         else if (i == 3)
         {
-            Parameter.addweight(0.01f);
-            Parameter.addsight(0.01f);
+            Parameter.Instance().addweight(0.01f);
+            Parameter.Instance().addsight(0.01f);
         }
         else if (i == 4)
         {
-            Parameter.addweight(0.01f);
-            Parameter.addintelligence(-0.05f);
+            Parameter.Instance().addweight(0.01f);
+            Parameter.Instance().addintelligence(-0.05f);
         }
     }
 

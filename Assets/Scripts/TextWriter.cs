@@ -96,6 +96,26 @@ public class TextWriter : MonoBehaviour
             ScenarioCounter.Instance().endGame();
             nowline++;
         }
+        else if (Regex.IsMatch(line, "@y"))
+        {
+            Parameter.Instance().addstrength(0.5f);
+            nowline++;
+        }
+        else if (Regex.IsMatch(line, "@u"))
+        {
+            Parameter.Instance().addstrength(0.5f);
+            nowline++;
+        }
+        else if (Regex.IsMatch(line, "@i"))
+        {
+            Parameter.Instance().addweight(0.5f);
+            nowline++;
+        }
+        else if (Regex.IsMatch(line, "@o"))
+        {
+            Parameter.Instance().addintelligence(0.5f);
+            nowline++;
+        }
         else
         {
             int comma = line.IndexOf(",");

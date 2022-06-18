@@ -67,33 +67,26 @@ public class ScenarioCounter : MonoBehaviour
 
         if (nowday == 5)
         {
-            SceneManager.LoadScene("end");
-            if (textWriter == null)
-            {
-                textWriter = GameObject.Find("TextController").GetComponent<TextWriter>();
-            }
-            if (textWriter != null)
-            {
-                float intelli = Parameter.Instance().intelligence;
-                float weight = Parameter.Instance().weight;
-                float strength = Parameter.Instance().strength;
-                float sight = Parameter.Instance().sight;
 
-                if (intelli > weight && intelli > strength && intelli > sight)
-                {
-                    textWriter.path = "Assets/Texts/end2.txt";
-                }
-                else if (weight > intelli && weight > strength && weight > sight)
-                {
-                    textWriter.path = "Assets/Texts/end1.txt";
-                }
-                else
-                {
-                    textWriter.path = "Assets/Texts/end3.txt";
-                }
+            float intelli = Parameter.Instance().intelligence;
+            float weight = Parameter.Instance().weight;
+            float strength = Parameter.Instance().strength;
+            float sight = Parameter.Instance().sight;
 
-                nowday++;
+            if (intelli > weight && intelli > strength && intelli > sight)
+            {
+                SceneManager.LoadScene("end");
             }
+            else if (weight > intelli && weight > strength && weight > sight)
+            {
+                SceneManager.LoadScene("end2");
+            }
+            else
+            {
+                SceneManager.LoadScene("end3");
+            }
+
+            nowday++;
         }
 
         if (count == 1)
