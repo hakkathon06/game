@@ -38,7 +38,7 @@ public class MGTimer : MonoBehaviour
             seconds = 3 - seconds;
             startcount.text = seconds.ToString();
         }
-        else if (startflag == 2) 
+        else if (startflag == 2)
         {
             seconds = 40 - seconds;
             if (totalTime > 40f)
@@ -57,6 +57,7 @@ public class MGTimer : MonoBehaviour
             if (totalTime > 3f)
             {
                 SceneManager.LoadScene("pre_minigame");
+                SoundManager.Instance().PlayLoop("TitleBGM");
             }
         }
     }

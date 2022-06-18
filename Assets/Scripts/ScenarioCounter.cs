@@ -52,6 +52,7 @@ public class ScenarioCounter : MonoBehaviour
     public void miniGameStart()
     {
         SceneManager.LoadScene("minigame_g");
+        SoundManager.Instance().PlayLoop("MiniBGM");
     }
 
     public void endGame()
@@ -80,11 +81,11 @@ public class ScenarioCounter : MonoBehaviour
 
                 if (intelli > weight && intelli > strength && intelli > sight)
                 {
-                    textWriter.path = "Assets/Texts/end1.txt";
+                    textWriter.path = "Assets/Texts/end2.txt";
                 }
                 else if (weight > intelli && weight > strength && weight > sight)
                 {
-                    textWriter.path = "Assets/Texts/end2.txt";
+                    textWriter.path = "Assets/Texts/end1.txt";
                 }
                 else
                 {
