@@ -12,6 +12,8 @@ public class ScenarioCounter : MonoBehaviour
     public GameObject YujinB;
     public GameObject AiAi;
 
+    public TextWriter textWriter;
+
     private static ScenarioCounter instance;
     public static ScenarioCounter Instance()
     {
@@ -26,6 +28,8 @@ public class ScenarioCounter : MonoBehaviour
 
     [SerializeField]
     private int count = 0;
+    [SerializeField]
+    private int nowday = 0;
     public void incScenario()
     {
         count++;
@@ -35,8 +39,35 @@ public class ScenarioCounter : MonoBehaviour
         return count;
     }
 
+    public void incDays()
+    {
+        nowday++;
+    }
+
+    public void miniGameStart()
+    {
+        SceneManager.LoadScene("minigame");
+    }
+
     private void Update()
     {
+
+        if (nowday == 5)
+        {
+            SceneManager.LoadScene("end");
+            if (textWriter == null)
+            {
+                textWriter = GameObject.Find("TextController").GetComponent<TextWriter>();
+            }
+            if (textWriter != null)
+            {
+                if (true)
+                {
+                    textWriter.path = "Assets/Texts/end1.txt";
+                }
+                nowday++;
+            }
+        }
 
         if (count == 1)
         {
