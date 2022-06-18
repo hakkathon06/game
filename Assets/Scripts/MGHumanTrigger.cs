@@ -43,8 +43,18 @@ public class MGHumanTrigger : MonoBehaviour
         time = 0f;
         dashtime = 0f;
         sidetime = 0f;
+<<<<<<< Updated upstream
         s_default.leftside = -12f;
         s_default.rightside = 12f;
+=======
+<<<<<<< HEAD
+        s_default.leftside = -10f;
+        s_default.rightside = 10f;
+=======
+        s_default.leftside = -12f;
+        s_default.rightside = 12f;
+>>>>>>> main
+>>>>>>> Stashed changes
         s_default.dashtime = 2.5f;
         s_default.dashlen = 4f;
         s_default.sidetime = 0.5f;
@@ -252,24 +262,27 @@ public class MGHumanTrigger : MonoBehaviour
 
     void Update()
     {
-        if (time <= 0)
+        if (MGTimer.startflag == 2)
         {
-            Action();
+            if (time <= 0)
+            {
+                Action();
+            }
+            else
+            {
+                time -= Time.deltaTime;
+            }
+            if (dashtime > 0)
+            {
+                dashtime -= Time.deltaTime;
+            }
+            if (sidetime > 0)
+            {
+                sidetime -= Time.deltaTime;
+            }
+            Fix_position();
+            Fix_size();
         }
-        else
-        {
-            time -= Time.deltaTime;
-        }
-        if (dashtime > 0)
-        {
-            dashtime -= Time.deltaTime;
-        }
-        if (sidetime > 0)
-        {
-            sidetime -= Time.deltaTime;
-        }
-        Fix_position();
-        Fix_size();
     }
 
     void GetItem(int i)
@@ -311,13 +324,16 @@ public class MGHumanTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         int i;
-        for (i = 0; i < 4; i++)
+        if (MGTimer.startflag == 2)
         {
-            if (string.Compare(other.gameObject.tag, item[i]) == 0)
+            for (i = 0; i < 4; i++)
             {
-                Debug.Log(item[i]);
-                GetItem(i);
-                other.gameObject.SetActive(false);
+                if (string.Compare(other.gameObject.tag, item[i]) == 0)
+                {
+                    Debug.Log(item[i]);
+                    GetItem(i);
+                    other.gameObject.SetActive(false);
+                }
             }
         }
     }
