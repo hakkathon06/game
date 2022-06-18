@@ -43,18 +43,8 @@ public class MGHumanTrigger : MonoBehaviour
         time = 0f;
         dashtime = 0f;
         sidetime = 0f;
-<<<<<<< Updated upstream
         s_default.leftside = -12f;
         s_default.rightside = 12f;
-=======
-<<<<<<< HEAD
-        s_default.leftside = -10f;
-        s_default.rightside = 10f;
-=======
-        s_default.leftside = -12f;
-        s_default.rightside = 12f;
->>>>>>> main
->>>>>>> Stashed changes
         s_default.dashtime = 2.5f;
         s_default.dashlen = 4f;
         s_default.sidetime = 0.5f;
