@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class TateScroll : MonoBehaviour
 {
-
-    // スクロールスピードをここで定義
-    [SerializeField] float speed = 1;
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         //下方向にスクロール
+        HENNSUU hennsuu;
+        GameObject obj = GameObject.Find("HENNSUU"); //Playerっていうオブジェクトを探す
+        hennsuu = obj.GetComponent<HENNSUU>(); //付いているスクリプトを取得
+        float speed = hennsuu.speed;
+
         transform.position -= new Vector3(0, Time.deltaTime * speed);
 
         //Yが-29まで来れば、61まで移動する
@@ -28,4 +30,5 @@ public class TateScroll : MonoBehaviour
         }
     }
 }
+
 

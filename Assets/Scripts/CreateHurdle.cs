@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateItem : MonoBehaviour
+public class CreateHurdle : MonoBehaviour
 {
     public GameObject makeprefab;
-    private float timeElapsed;
     // Start is called before the first frame update
+    private float timeElapsed;
     void Start()
     {
 
     }
-
 
     // Update is called once per frame
     void Update() {
@@ -19,7 +18,7 @@ public class CreateItem : MonoBehaviour
         HENNSUU hennsuu;
         GameObject obj = GameObject.Find("HENNSUU"); //Playerっていうオブジェクトを探す
         hennsuu = obj.GetComponent<HENNSUU>(); //付いているスクリプトを取得
-        float INTERVAL = hennsuu.CreateItemInterval;
+        float INTERVAL = hennsuu.CreateHurdleInterval;
 
         if(timeElapsed >= INTERVAL) {
             float x = Mathf.Floor(Random.Range(1, 5));
