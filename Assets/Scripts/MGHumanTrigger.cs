@@ -12,6 +12,7 @@ public class MGHumanTrigger : MonoBehaviour
     [SerializeField]  private float shadow_tan;
     private Vector3 human_size;
     private Sequence sequence;
+    private System.Random rand;
     private float time;
     private float dashtime;
     private float sidetime;
@@ -33,7 +34,8 @@ public class MGHumanTrigger : MonoBehaviour
     void Start()
     {
         human = GameObject.FindGameObjectWithTag("human").transform;
-        human_size = GameObject.FindGameObjectWithTag("human").GetComponent<BoxCollider>().size;
+        human_size = human.localScale;
+        GameObject.FindGameObjectWithTag("human").GetComponent<BoxCollider>().size = human_size;
         shadow = GameObject.FindGameObjectWithTag("shadow").transform;
         cam = Camera.main.gameObject.transform;
         shadow_tan = 0.5f;
@@ -48,16 +50,43 @@ public class MGHumanTrigger : MonoBehaviour
         s_default.lanewidth = 2f;
         baseheight = 0f;
         action = new int[4] {0, 1, 2, 3};
-        item = new string[4]{"hurdle", "item1", "item2", "item3"};
+        item = new string[5]{"hurdle", "item1", "item2", "item3", "item4"};
+        rand = new System.Random((int)DateTime.Now.Millisecond);
     }
 
-    float derivative()
+    void    action_shuffle()
     {
-        return (0.01f);
+        int i, j, tmp;
+        int[] flag = new int[4] {1, 1, 1, 1}; 
+
+        for (i = 4; i > 0; i--)
+        {
+            j = 0;
+            tmp = rand.Next(0, i) + 1;
+            while(tmp > 0)
+            {
+                if (flag[j++] == 1)
+                {
+                    tmp--;
+                }
+            }
+            flag[--j] = 0;
+            action[i - 1] = j;
+        }
     }
 
-    void Jump()
+    void Jump(int flag)
     {
+        if (rand.Next(1,1001) <= (int)(Parameter.param.intelligence * 1000))
+        {
+            flag = 0;
+        }
+        if (flag == 1)
+        {
+            Debug.Log("random");
+            Action_Select(rand.Next(0, 5), 0);
+            return ;
+        }
         time = 1f + Parameter.param.strength;
         if (dashtime > 0)
         {
@@ -76,56 +105,89 @@ public class MGHumanTrigger : MonoBehaviour
         }
         Debug.Log("jump");
         sequence.Join(human.DOMoveZ(-1f, time / 2).SetLoops(2,LoopType.Yoyo));
-        Parameter.param.strength += derivative();
+        addweight(-0.02f);
+        addstrength(0.01f);
     }
 
-    void Dash()
+    void Dash(int flag)
     {
         if (dashtime <= 0)
         {
+            if (rand.Next(1,1000) < (int)(Parameter.param.intelligence * 1000))
+            {
+                flag = 0;
+            }
+            if (flag == 1)
+            {
+                Debug.Log("random");
+                Action_Select(rand.Next(0, 5), 0);
+                return ;
+            }
             Debug.Log("dash");
             sequence.Join(human.DOMoveY(human.position.y + s_default.dashlen, s_default.dashtime).SetLoops(2,LoopType.Yoyo));
             dashtime = s_default.dashtime * 2;
+            addweight(-0.02f);
+            addstrength(0.01f);
         }
     }
 
-    void Right()
+    void Right(int flag)
     {
         if (human.position.x < s_default.rightside - s_default.lanewidth && sidetime <= 0)
         {
+            if (rand.Next(1,1000) < (int)(Parameter.param.intelligence * 1000))
+            {
+                flag = 0;
+            }
+            if (flag == 1)
+            {
+                Debug.Log("random");
+                Action_Select(rand.Next(0, 5), 0);
+                return ;
+            }
             Debug.Log("right");
             sequence.Join(human.DOMoveX(human.position.x + s_default.lanewidth, s_default.sidetime).SetEase(Ease.Linear));
             sidetime = s_default.sidetime;
         }
     }
 
-    void Left()
+    void Left(int flag)
     {
         if (human.position.x > s_default.leftside + s_default.lanewidth && sidetime <= 0)
         {
+            if (rand.Next(1,1000) < (int)(Parameter.param.intelligence * 1000))
+            {
+                flag = 0;
+            }
+            if (flag == 1)
+            {
+                Debug.Log("random");
+                Action_Select(rand.Next(0, 5), 0);
+                return ;
+            }
             Debug.Log("left");
             sequence.Join(human.DOMoveX(human.position.x - s_default.lanewidth, s_default.sidetime).SetEase(Ease.Linear)); 
             sidetime = s_default.sidetime;
         }
     }
 
-    void Action_Select(int n)
+    void Action_Select(int n, int flag)
     {
         if (n == 0)
         {
-            Jump();
+            Jump(flag);
         }
         else if (n == 1)
         {
-            Dash();
+            Dash(flag);
         }
         else if (n == 2)
         {
-            Right();
+            Right(flag);
         }
         else if (n == 3)
         {
-            Left();
+            Left(flag);
         }
     }
 
@@ -134,19 +196,19 @@ public class MGHumanTrigger : MonoBehaviour
         sequence = DOTween.Sequence();
         if (Input.GetKey(KeyCode.Space))
         {
-            Action_Select(action[0]);
+            Action_Select(action[0], 1);
         }
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            Action_Select(action[1]);
+            Action_Select(action[1], 1);
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            Action_Select(action[2]);
+            Action_Select(action[2], 1);
         }
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            Action_Select(action[3]);
+            Action_Select(action[3], 1);
         }
 
     }
@@ -171,7 +233,7 @@ public class MGHumanTrigger : MonoBehaviour
         {
             scale = 2 / scale;
         }
-        size.x = human_size.x * scale;
+        size.x = (human_size.x + (Parameter.param.weight - 1) / 3) * scale;
         size.y = human_size.y * scale;
         size.z = human_size.z * scale;
         human.localScale = size;
@@ -181,7 +243,7 @@ public class MGHumanTrigger : MonoBehaviour
         {
             scale = 2 / scale;
         }
-        size.x = human_size.x * scale;
+        size.x = (human_size.x + (Parameter.param.weight - 1) / 3) * scale;
         size.y = human_size.z * shadow_tan * scale;
         size.z = 0.02f;
         shadow.localScale = size;
@@ -213,26 +275,74 @@ public class MGHumanTrigger : MonoBehaviour
     {
         if (i == 0)
         {
-            time = 2;
+            if (time < 2 - Parameter.param.weight && Parameter.param.weight < 5)
+            {
+                time = 2 - Parameter.param.weight;
+                if (time < 0.5f)
+                {
+                    time = 0.5f;
+                }
+            }
+            addweight(0.01f);
         }
         else if (i == 1)
         {
-
+            addweight(0.01f);
+            addstrength(0.01f);
         }
         else if (i == 2)
         {
-
+            addweight(0.01f);
+            addintelligence(0.01f);
         }
         else if (i == 3)
         {
+            addweight(0.01f);
+            addsight(0.01f);
+        }
+        else if (i == 4)
+        {
+            addweight(0.01f);
+            addintelligence(-0.05f);
+        }
+    }
 
+    void addweight(float x)
+    {
+        if (Parameter.param.weight + x > 0)
+        {
+            Parameter.param.weight += x;
+        }
+    }
+
+    void addstrength(float x)
+    {
+        if (Parameter.param.strength + x > 0)
+        {
+            Parameter.param.strength += x;
+        }
+    }
+
+    void addintelligence(float x)
+    {
+        if (Parameter.param.intelligence + x > 0)
+        {
+            Parameter.param.intelligence += x;
+        }
+    }
+
+    void addsight(float x)
+    {
+        if (Parameter.param.sight + x > 0)
+        {
+            Parameter.param.sight += x;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
         int i;
-        for (i = 0; i < 3; i++)
+        for (i = 0; i < 4; i++)
         {
             if (string.Compare(other.gameObject.tag, item[i]) == 0)
             {
