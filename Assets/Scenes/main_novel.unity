@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
-  m_sharedMaterial: {fileID: -8402560004070289904, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -969,8 +969,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
-  m_sharedMaterial: {fileID: -8402560004070289904, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1075,6 +1075,7 @@ GameObject:
   - component: {fileID: 1062290231}
   - component: {fileID: 1062290233}
   - component: {fileID: 1062290232}
+  - component: {fileID: 1062290234}
   m_Layer: 5
   m_Name: Girl
   m_TagString: Untagged
@@ -1140,6 +1141,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062290230}
   m_CullTransparentMesh: 1
+
 --- !u!1 &1294145785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,8 +1290,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Button
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
-  m_sharedMaterial: {fileID: -8402560004070289904, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2364,8 +2366,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u306A\u3093\u304B\u66F8\u3044\u3068\u3051\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01\uFF01"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
-  m_sharedMaterial: {fileID: -8402560004070289904, guid: fb42fe0836a5fee49af0f4049173ccc4, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
