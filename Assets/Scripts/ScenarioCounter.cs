@@ -49,6 +49,13 @@ public class ScenarioCounter : MonoBehaviour
         SceneManager.LoadScene("minigame");
     }
 
+    public void endGame()
+    {
+        SceneManager.LoadScene("N");
+        count = 0;
+        nowday = 0;
+    }
+
     private void Update()
     {
 

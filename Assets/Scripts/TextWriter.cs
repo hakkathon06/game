@@ -91,6 +91,11 @@ public class TextWriter : MonoBehaviour
             ScenarioCounter.Instance().miniGameStart();
             nowline++;
         }
+        else if (Regex.IsMatch(line, "@e"))
+        {
+            ScenarioCounter.Instance().endGame();
+            nowline++;
+        }
         else
         {
             int comma = line.IndexOf(",");
