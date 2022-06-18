@@ -22,7 +22,9 @@ public class Title : MonoBehaviour
 
     public void PressExit()
     {
-
+        SceneManager.LoadScene("pre_minigame");
+        SoundManager.Instance().Play("Button");
+        SoundManager.Instance().PlayLoop("MainBGM");
     }
 
     // [SerializeField] private List<GameObject> Selectors;
