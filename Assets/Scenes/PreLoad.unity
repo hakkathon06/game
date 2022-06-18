@@ -167,6 +167,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a7553bc82408e468ecff0351f8bb99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &795192933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795192935}
+  - component: {fileID: 795192934}
+  m_Layer: 0
+  m_Name: parameta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &795192934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795192933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68362985b9f282c4f91e6e9331019795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  strength: 0
+  weight: 0
+  intelligence: 0
+  sight: 0
+--- !u!4 &795192935
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795192933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3087597, y: 6.2780905, z: -11.989635}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &920215410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 920215411}
+  m_Layer: 0
+  m_Name: Parameter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &920215411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920215410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.63442194, y: 0.21535434, z: 965.29047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1408144991
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +305,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: a967a762bb1b7e742a14e4394d088e21, type: 3}
   - name: MainBGM
     audioClip: {fileID: 8300000, guid: 41cbfef3f91d6e1449e6ce490e341d20, type: 3}
+  - name: MiniBGM
+    audioClip: {fileID: 8300000, guid: 8a5be304fe8063b4b8a51e6029e94f4c, type: 3}
 --- !u!4 &1408144993
 Transform:
   m_ObjectHideFlags: 0

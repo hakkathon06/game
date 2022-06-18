@@ -51,7 +51,7 @@ public class ScenarioCounter : MonoBehaviour
 
     public void miniGameStart()
     {
-        SceneManager.LoadScene("minigame");
+        SceneManager.LoadScene("minigame_g");
     }
 
     public void endGame()
@@ -73,10 +73,24 @@ public class ScenarioCounter : MonoBehaviour
             }
             if (textWriter != null)
             {
-                if (true)
+                float intelli = Parameter.Instance().intelligence;
+                float weight = Parameter.Instance().weight;
+                float strength = Parameter.Instance().strength;
+                float sight = Parameter.Instance().sight;
+
+                if (intelli > weight && intelli > strength && intelli > sight)
                 {
                     textWriter.path = "Assets/Texts/end1.txt";
                 }
+                else if (weight > intelli && weight > strength && weight > sight)
+                {
+                    textWriter.path = "Assets/Texts/end2.txt";
+                }
+                else
+                {
+                    textWriter.path = "Assets/Texts/end3.txt";
+                }
+
                 nowday++;
             }
         }

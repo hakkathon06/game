@@ -56,7 +56,7 @@ public class MGTimer : MonoBehaviour
         {
             if (totalTime > 3f)
             {
-                SceneManager.LoadScene("end");
+                SceneManager.LoadScene("pre_minigame");
             }
         }
     }

@@ -105,7 +105,7 @@ public class MGHumanTrigger : MonoBehaviour
             time = sidetime;
         }
         Debug.Log("jump");
-        sequence.Join(human.DOMoveZ(-1f, time / 2).SetLoops(2,LoopType.Yoyo));
+        sequence.Join(human.DOMoveZ(-3f, time / 2).SetLoops(2,LoopType.Yoyo));
         Parameter.addweight(-0.02f);
         Parameter.addstrength(0.01f);
     }
