@@ -252,24 +252,27 @@ public class MGHumanTrigger : MonoBehaviour
 
     void Update()
     {
-        if (time <= 0)
+        if (MGTimer.startflag == 2)
         {
-            Action();
+            if (time <= 0)
+            {
+                Action();
+            }
+            else
+            {
+                time -= Time.deltaTime;
+            }
+            if (dashtime > 0)
+            {
+                dashtime -= Time.deltaTime;
+            }
+            if (sidetime > 0)
+            {
+                sidetime -= Time.deltaTime;
+            }
+            Fix_position();
+            Fix_size();
         }
-        else
-        {
-            time -= Time.deltaTime;
-        }
-        if (dashtime > 0)
-        {
-            dashtime -= Time.deltaTime;
-        }
-        if (sidetime > 0)
-        {
-            sidetime -= Time.deltaTime;
-        }
-        Fix_position();
-        Fix_size();
     }
 
     void GetItem(int i)
@@ -311,13 +314,16 @@ public class MGHumanTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         int i;
-        for (i = 0; i < 4; i++)
+        if (MGTimer.startflag == 2)
         {
-            if (string.Compare(other.gameObject.tag, item[i]) == 0)
+            for (i = 0; i < 4; i++)
             {
-                Debug.Log(item[i]);
-                GetItem(i);
-                other.gameObject.SetActive(false);
+                if (string.Compare(other.gameObject.tag, item[i]) == 0)
+                {
+                    Debug.Log(item[i]);
+                    GetItem(i);
+                    other.gameObject.SetActive(false);
+                }
             }
         }
     }
