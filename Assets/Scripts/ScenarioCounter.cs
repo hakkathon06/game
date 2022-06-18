@@ -12,6 +12,8 @@ public class ScenarioCounter : MonoBehaviour
     public GameObject YujinB;
     public GameObject AiAi;
 
+    public GameObject SoundM;
+
     public TextWriter textWriter;
 
     private static ScenarioCounter instance;
@@ -38,7 +40,10 @@ public class ScenarioCounter : MonoBehaviour
     {
         return count;
     }
-
+    public int getDay()
+    {
+        return nowday;
+    }
     public void incDays()
     {
         nowday++;
