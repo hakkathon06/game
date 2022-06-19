@@ -10,6 +10,12 @@ TagManager:
   - hurdle
   - item1
   - item2
+  - testitem
+  - item3
+<<<<<<< Updated upstream
+=======
+  - item4
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

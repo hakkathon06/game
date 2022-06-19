@@ -37,7 +37,7 @@ public class MGHumanTrigger : MonoBehaviour
         human_size = human.localScale;
         // GameObject.FindGameObjectWithTag("human").GetComponent<BoxCollider>().size = human_size;
         shadow = GameObject.FindGameObjectWithTag("shadow").transform;
-
+        human.position = new Vector3(2.5f, -3f, 0f);
         cam = Camera.main.gameObject.transform;
         shadow_tan = 0.5f;
         time = 0f;
@@ -291,22 +291,22 @@ public class MGHumanTrigger : MonoBehaviour
         }
         else if (i == 1)
         {
-            Parameter.Instance().addweight(0.02f);
+            Parameter.Instance().addweight(0.01f);
             Parameter.Instance().addstrength(0.01f);
         }
         else if (i == 2)
         {
-            Parameter.Instance().addweight(0.01f);
+            Parameter.Instance().addweight(0.005f);
             Parameter.Instance().addintelligence(0.01f);
         }
         else if (i == 3)
         {
-            Parameter.Instance().addweight(0.01f);
+            Parameter.Instance().addweight(0.04f);
             Parameter.Instance().addsight(0.01f);
         }
         else if (i == 4)
         {
-            Parameter.Instance().addweight(0.01f);
+            Parameter.Instance().addweight(0.005f);
             Parameter.Instance().addintelligence(-0.05f);
         }
     }

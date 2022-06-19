@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6333995291600227347}
   - component: {fileID: 3840191331103759977}
   - component: {fileID: 4302781032340530508}
+  - component: {fileID: 530715516994031605}
   m_Layer: 0
   m_Name: fish_sakana_iwashi
   m_TagString: item2
@@ -97,3 +98,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!65 &530715516994031605
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824864540907840436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 5.67, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
