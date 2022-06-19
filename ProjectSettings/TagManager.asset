@@ -3,19 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - human
-  - shadow
-  - base
-  - hurdle
-  - item1
-  - item2
-  - testitem
-  - item3
-<<<<<<< Updated upstream
-=======
-  - item4
->>>>>>> Stashed changes
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -23,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Effect
+  - 
   - 
   - 
   - 
