@@ -51,7 +51,7 @@ public class ScenarioCounter : MonoBehaviour
 
     public void miniGameStart()
     {
-        SceneManager.LoadScene("minigame_g");
+        SceneManager.LoadScene("minigame_h");
         SoundManager.Instance().PlayLoop("MiniBGM");
     }
 
